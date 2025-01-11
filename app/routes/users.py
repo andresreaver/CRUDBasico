@@ -1,10 +1,13 @@
 import sqlite3
 
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from ..database import get_db_connection
 
 users_bp = Blueprint('users', __name__)
 
+@users_bp.route('/')
+def index():
+    return render_template('index.html')
 
 # Ruta para leer todos los usuarios (READ)
 @users_bp.route('/users', methods=['GET'])
